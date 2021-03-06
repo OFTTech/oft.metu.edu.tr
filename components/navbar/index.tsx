@@ -26,9 +26,13 @@ export default function Navbar() {
                                         </Typography>
                                     </a>
                                 </Link>
-                                <Typography variant="h5" className={styles.menuName}>
-                                    Hakkımızda
-                                </Typography>
+                                <Link href={{pathname: "/about-us"}}>
+                                    <a>
+                                        <Typography variant="h5" className={styles.menuName}>
+                                            Hakkımızda
+                                        </Typography>
+                                    </a>
+                                </Link>
                                 <Typography variant="h5" className={styles.menuName}>
                                     Etkinlikler
                                 </Typography>
