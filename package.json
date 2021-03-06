@@ -1,6 +1,8 @@
 {
   "name": "oft.metu.edu.tr",
   "version": "0.1.0",
+  "repository": "https://github.com/OFTTech/oft.metu.edu.tr",
+  "description": "ODTÜ Fizik Topluluğu frontend",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
