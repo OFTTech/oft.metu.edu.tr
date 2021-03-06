@@ -1,26 +1,71 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import Layout, {siteTitle} from "@@/components/layout";
-import utilStyles from '@@/styles/utils.module.scss'
+import BigGallery from "@@/components/pages/index/bigGallery";
+import ContentList from "@@/components/pages/index/contentList";
+import {Grid, Typography} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core/styles";
+import Image from 'next/image'
+
+const useStyles = makeStyles(() => ({
+    fontTop: {
+        fontWeight: "bold",
+        fontSize: "18px",
+        textAlign: "center",
+        padding: "10px"
+    },
+    middle: {
+        height: "230px",
+        margin: "auto"
+    }
+}));
 
 export default function Home() {
+    const classes = useStyles();
     return (
-        <Layout home>
+        <Layout>
             <Head>
                 <title>{siteTitle}</title>
             </Head>
-            <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-                <p>OFT {process.env.NEXT_PUBLIC_WP_GRAPHQL} {process.env.NEXT_PUBLIC_NEXT_HOST}</p>
-                <Link href={"/posts/first-post"}>
-                    <a>First Post!</a>
-                </Link>
-                <Link href={"/forever"}>
-                    <a>Forever!</a>
-                </Link>
-                <h2 className={utilStyles.headingLg}>Blog</h2>
-                <ul className={utilStyles.list}>
-                </ul>
-            </section>
+            <Grid container direction={"column"}>
+                <BigGallery/>
+                <Grid container justify={"space-between"}>
+                    <Grid>
+                        <Typography variant="h5" className={classes.fontTop}>
+                            YAKLAŞAN ETKİNLİKLER
+                        </Typography>
+                        <ContentList/>
+                        <Grid style={{marginTop: "10px"}} container justify={"center"}>
+                            <Image src={"/logo.jpg"} width={80} height={80}/>
+                            <div style={{marginRight: "20px"}}/>
+                            <Image src={"/logo.jpg"} width={80} height={80}/>
+                            <div style={{marginRight: "20px"}}/>
+                            <Image src={"/logo.jpg"} width={80} height={80}/>
+                            <div style={{marginRight: "20px"}}/>
+                            <Image src={"/logo.jpg"} width={80} height={80}/>
+                        </Grid>
+                    </Grid>
+                    <Grid className={classes.middle}>
+                        <Image src={"/logo.jpg"} width={80} height={80}/>
+                        <br/>
+                        <Image src={"/logo.jpg"} width={80} height={80}/>
+                    </Grid>
+                    <Grid>
+                        <Typography variant="h5" className={classes.fontTop}>
+                            SON YAZILAR
+                        </Typography>
+                        <ContentList/>
+                        <Grid style={{marginTop: "10px"}} container justify={"center"}>
+                            <Image src={"/logo.jpg"} width={80} height={80}/>
+                            <div style={{marginRight: "20px"}}/>
+                            <Image src={"/logo.jpg"} width={80} height={80}/>
+                            <div style={{marginRight: "20px"}}/>
+                            <Image src={"/logo.jpg"} width={80} height={80}/>
+                            <div style={{marginRight: "20px"}}/>
+                            <Image src={"/logo.jpg"} width={80} height={80}/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
         </Layout>
     )
 }

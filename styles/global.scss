@@ -3,3 +3,7 @@
 @tailwind utilities;
 
 @import '~nprogress/nprogress.css';
+
+* {
+  font-family: "Open Sans", "Roboto", "Helvetica", "Arial", sans-serif !important;
+}
