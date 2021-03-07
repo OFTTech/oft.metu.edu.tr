@@ -24,7 +24,7 @@ export default function Footer() {
                     footer
                     footer
                     <br/>
-                    Copyright © <a href={"https://github.com/OFTTech"} target={"_blank"}>OFTTech</a>
+                    Copyright © <a href={"https://github.com/OFTTech"} rel={"noopener"} target={"_blank"}>OFTTech</a>
                 </Grid>
                 <Grid item xs={3}/>
             </Grid>
