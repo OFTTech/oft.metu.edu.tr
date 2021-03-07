@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout, {siteTitle} from "@@/components/layout";
+import Layout from "@@/components/layout";
 import BigGallery from "@@/components/pages/index/bigGallery";
 import ContentList from "@@/components/pages/index/contentList";
 import {Grid, Typography} from "@material-ui/core";
@@ -24,7 +24,7 @@ export default function Home() {
     return (
         <Layout>
             <Head>
-                <title>{siteTitle}</title>
+                <title>ODTÜ Fizik Topluluğu</title>
             </Head>
             <Grid container direction={"column"}>
                 <BigGallery/>
