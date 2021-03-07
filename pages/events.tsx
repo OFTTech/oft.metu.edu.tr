@@ -26,6 +26,10 @@ export default function Events() {
                     <Chip label={"Epsilon-Delta"}/>
                     <Chip label={"Geziler"}/>
                 </Grid>
+                <Grid container justify={"space-around"} style={{marginBottom: "15px"}}>
+                    <Chip color={"primary"} label={"Yaklaşan"}/>
+                    <Chip label={"Arşiv"}/>
+                </Grid>
                 <TextCardList/>
             </Grid>
         </Layout>
