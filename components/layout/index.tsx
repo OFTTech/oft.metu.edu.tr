@@ -3,6 +3,7 @@ import {ReactNode} from "react";
 import Navbar from "@@/components/navbar";
 import Main from "@@/components/main";
 import {Grid} from "@material-ui/core";
+import Footer from "@@/components/footer";
 
 export const siteTitle = "OFT"
 
@@ -23,6 +24,7 @@ export default function Layout({children}: { children: ReactNode }) {
             <Grid container justify={"center"}>
                 <Main>{children}</Main>
             </Grid>
+            <Footer/>
         </div>
     )
 }

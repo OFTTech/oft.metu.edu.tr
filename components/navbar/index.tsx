@@ -10,10 +10,14 @@ export default function Navbar() {
             <AppBar elevation={0} color={"primary"} position={"static"}>
                 <Grid container justify={"center"}>
                     <Toolbar className={styles.toolbar}>
-                        <Image className={styles.logo} src={"/logo.jpg"} alt={siteTitle} width={150}
-                               height={150}
-                               quality={100}
-                               priority={true}/>
+                        <Link href={{pathname: "/"}}>
+                            <a>
+                                <Image className={styles.logo} src={"/logo.jpg"} alt={siteTitle} width={150}
+                                       height={150}
+                                       quality={100}
+                                       priority={true}/>
+                            </a>
+                        </Link>
                         <Grid container direction={"column"}>
                             <Typography variant="h5" className={`${styles.title} ${styles.fontBold}`}>
                                 ODTÜ FİZİK TOPLULUĞU
