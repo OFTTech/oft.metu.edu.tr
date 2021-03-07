@@ -1,7 +1,39 @@
-.card {
+.bigCard {
+  /* width */
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
   border-radius: 0 !important;
   border-width: 3px;
   border-color: #434B54;
-  width: 450px;
   height: 270px;
+  overflow-y: scroll;
+}
+
+.card{
+  border-bottom-color: #bbb;
+  border-bottom-width: 2px;
+  border-radius: 0 !important;
+}
+
+.truncate{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
