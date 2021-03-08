@@ -20,5 +20,5 @@ export async function getStaticPaths() {
 }
 
 export default function AdminID() {
-    return <DefaultErrorPage statusCode={404}/>
+    return (<DefaultErrorPage statusCode={404}/>)
 }
