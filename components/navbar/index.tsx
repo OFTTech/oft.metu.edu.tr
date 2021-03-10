@@ -30,7 +30,7 @@ export default function Navbar() {
                                         </Typography>
                                     </a>
                                 </Link>
-                                <Link href={{pathname: "/about-us"}}>
+                                <Link href={{pathname: "/page/about-us"}}>
                                     <a>
                                         <Typography variant="h5" className={styles.menuName}>
                                             Hakkımızda

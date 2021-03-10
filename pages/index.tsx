@@ -5,6 +5,8 @@ import ContentList from "@@/components/pages/index/contentList";
 import {Grid, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import Image from 'next/image'
+import {GetStaticProps, InferGetStaticPropsType} from "next";
+import {getAllIndex} from "@@/lib/wp-api";
 
 const useStyles = makeStyles(() => ({
     fontTop: {
@@ -19,7 +21,7 @@ const useStyles = makeStyles(() => ({
     }
 }));
 
-export default function Home() {
+export default function Home({data}: InferGetStaticPropsType<typeof getStaticProps>) {
     const classes = useStyles();
     return (
         <Layout>
@@ -68,4 +70,13 @@ export default function Home() {
             </Grid>
         </Layout>
     )
+}
+
+export const getStaticProps: GetStaticProps<{
+    data: ReturnType<typeof getAllIndex>
+}> = async () => {
+    const data = await getAllIndex()
+    return {
+        props: {data}
+    }
 }

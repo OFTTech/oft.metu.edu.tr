@@ -1,1 +1,1 @@
-type PromiseResolvedType<T> = T extends Promise<infer U> ? U : T; // ReturnType with async function
+type PromiseResolvedReturnType<T> = T extends Promise<infer U> ? U : T; // ReturnType with async function

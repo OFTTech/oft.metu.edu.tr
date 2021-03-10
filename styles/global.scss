@@ -5,9 +5,24 @@
 @import '~nprogress/nprogress.css';
 
 * {
-  font-family: "Open Sans", "Roboto", "Helvetica", "Arial", sans-serif !important;
+  //font-family: "Open Sans", "Roboto", "Helvetica", "Arial", sans-serif !important;
 }
 
 .font-bold {
   font-weight: 700 !important;
+}
+
+@import './wp/admin-bar';
+@import './wp/block-library-style';
+@import './wp/block-library-theme';
+@import './wp/twentytwentyone-style';
+@import './wp/twentytwentyone-assets-print';
+@import './wp/seo-adminbar';
+
+body {
+  background-color: white !important;
+}
+
+a {
+  color: #3a6dc5;
 }

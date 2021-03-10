@@ -4,7 +4,7 @@ export async function getStaticProps(context) {
     if (context.params.id == process.env.WP_BEARER) {
         return {
             redirect: {
-                destination: process.env.WP_SITE,
+                destination: process.env.WP_SITE + "/wp-admin",
                 permanent: false
             }
         }

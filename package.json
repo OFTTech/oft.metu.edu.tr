@@ -9,6 +9,7 @@
     "start": "next start",
     "buildAndStart": "npm run build && npm start",
     "analyze": "npx cross-env ANALYZE=true npm run build",
+    "analyzeAndStart": "npm run analyze && npm start",
     "cleanCache": "npx rimraf .next && npx rimraf node_modules/.cache"
   },
   "dependencies": {
