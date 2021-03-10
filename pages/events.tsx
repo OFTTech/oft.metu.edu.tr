@@ -3,6 +3,8 @@ import Layout from "@@/components/layout";
 import {makeStyles} from "@material-ui/core/styles";
 import {Chip, Grid} from "@material-ui/core";
 import TextCardList from "@@/components/pages/events/textCardList";
+import {GetStaticProps} from "next";
+import {getGeneral} from "@@/lib/wp-api/general";
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -34,4 +36,13 @@ export default function Events() {
             </Grid>
         </Layout>
     )
+}
+
+export const getStaticProps: GetStaticProps<{ initialReduxState: any }> = async () => {
+    const general = await getGeneral()
+    return {
+        props: {initialReduxState: {general}},
+        revalidate: 1
+        //TODO revalidate: 3600
+    }
 }

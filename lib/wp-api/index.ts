@@ -16,19 +16,3 @@ export default async function fetchAPI(query, {variables} = {variables: null}) {
     }
     return json.data
 }
-
-export async function getAllIndex() {
-    const data = await fetchAPI(`
-        query MyQuery {
-          pages {
-            edges {
-              node {
-                content
-                title
-              }
-            }
-          }
-        }
-    `)
-    return data
-}

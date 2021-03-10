@@ -5,8 +5,8 @@ import ContentList from "@@/components/pages/index/contentList";
 import {Grid, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import Image from 'next/image'
-import {GetStaticProps, InferGetStaticPropsType} from "next";
-import {getAllIndex} from "@@/lib/wp-api";
+import {GetStaticProps} from "next";
+import {getGeneral} from "@@/lib/wp-api/general";
 
 const useStyles = makeStyles(() => ({
     fontTop: {
@@ -21,7 +21,7 @@ const useStyles = makeStyles(() => ({
     }
 }));
 
-export default function Home({data}: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Home() {
     const classes = useStyles();
     return (
         <Layout>
@@ -72,11 +72,17 @@ export default function Home({data}: InferGetStaticPropsType<typeof getStaticPro
     )
 }
 
-export const getStaticProps: GetStaticProps<{
-    data: ReturnType<typeof getAllIndex>
-}> = async () => {
-    const data = await getAllIndex()
+export const getStaticProps: GetStaticProps<{ initialReduxState: any }> = async () => {
+    const general = await getGeneral()
+    // const reduxStore = initializeStore()
+    // const {dispatch} = reduxStore
+    // dispatch({
+    //     type: 'UPDATE_GENERAL',
+    //     general
+    // })
     return {
-        props: {data}
+        props: {initialReduxState: {general}},
+        revalidate: 1
+        //TODO revalidate: 3600
     }
 }

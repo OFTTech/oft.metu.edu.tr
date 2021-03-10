@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {siteTitle} from "@@/components/layout";
 import styles from './navbar.module.scss'
+import {getGeneralMenus} from "@@/lib/store";
 
 export default function Navbar() {
     return (
@@ -23,40 +24,18 @@ export default function Navbar() {
                                 ODTÜ FİZİK TOPLULUĞU
                             </Typography>
                             <Grid container>
-                                <Link href={{pathname: "/"}}>
-                                    <a>
-                                        <Typography variant="h5" className={styles.menuName}>
-                                            Ana Sayfa
-                                        </Typography>
-                                    </a>
-                                </Link>
-                                <Link href={{pathname: "/page/about-us"}}>
-                                    <a>
-                                        <Typography variant="h5" className={styles.menuName}>
-                                            Hakkımızda
-                                        </Typography>
-                                    </a>
-                                </Link>
-                                <Link href={{pathname: "/events"}}>
-                                    <a>
-                                        <Typography variant="h5" className={styles.menuName}>
-                                            Etkinlikler
-                                        </Typography>
-                                    </a>
-                                </Link>
-                                <Link href={{pathname: "/events"}}>
-                                    <a>
-                                        <Typography variant="h5" className={styles.menuName}>
-                                            Yazılar
-                                        </Typography>
-                                    </a>
-                                </Link>
-                                <Typography variant="h5" className={styles.menuName}>
-                                    İletişim
-                                </Typography>
-                                <Typography variant="h5" className={styles.menuName}>
-                                    Kaynaklar
-                                </Typography>
+                                {getGeneralMenus().map(({node}) => {
+                                    return (
+                                        <Link key={node.id}
+                                              href={{pathname: node.connectedNode ? "/page" + node.path : node.path}}>
+                                            <a>
+                                                <Typography variant="h5" className={styles.menuName}>
+                                                    {node.label}
+                                                </Typography>
+                                            </a>
+                                        </Link>
+                                    )
+                                })}
                             </Grid>
                         </Grid>
                     </Toolbar>

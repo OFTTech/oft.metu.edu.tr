@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import Layout from "@@/components/layout";
-import {GetStaticPaths, InferGetStaticPropsType} from "next";
-import {getPage} from "@@/lib/wp-api/page";
+import {GetStaticPaths, GetStaticProps, InferGetStaticPropsType} from "next";
+import {GetPage, getPage} from "@@/lib/wp-api/page";
 import {Grid} from "@material-ui/core";
+import {getGeneral} from "@@/lib/wp-api/general";
 
 export default function Page({data}: InferGetStaticPropsType<typeof getStaticProps>) {
     return (
@@ -17,11 +18,13 @@ export default function Page({data}: InferGetStaticPropsType<typeof getStaticPro
     )
 }
 
-export const getStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps<{ data: GetPage, initialReduxState: any }> = async (context) => {
     const data = await getPage(context.params.id)
+    const general = await getGeneral()
     return {
-        props: {data},
-        revalidate: 1//3600
+        props: {data, initialReduxState: {general}},
+        revalidate: 1
+        //TODO revalidate: 3600
     }
 }
 

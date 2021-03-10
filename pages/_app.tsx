@@ -6,6 +6,8 @@ import {useEffect} from "react";
 import theme from '@@/lib/theme';
 import {ThemeProvider} from '@material-ui/core/styles';
 import Head from "next/head";
+import {useStore} from "@@/lib/store";
+import {Provider} from 'react-redux'
 
 
 export default function App({Component, pageProps}: AppProps) {
@@ -26,14 +28,16 @@ export default function App({Component, pageProps}: AppProps) {
         Router.events.on('routeChangeError', () => NProgress.done())
     })
 
+    const store = useStore(pageProps.initialReduxState)
+
     return (
-        <>
+        <Provider store={store}>
             <Head>
                 <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width"/>
             </Head>
             <ThemeProvider theme={theme}>
                 <Component {...pageProps} />
             </ThemeProvider>
-        </>
+        </Provider>
     )
 }
