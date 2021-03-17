@@ -1,3 +1,6 @@
 .card{
   border-radius: 0 !important;
+  &:hover {
+    background-color: #bbb;
+  }
 }

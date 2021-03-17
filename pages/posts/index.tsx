@@ -22,14 +22,9 @@ export default function Posts() {
             <Grid container className={classes.root}>
                 <Grid container justify={"space-around"} style={{marginBottom: "15px"}}>
                     <Chip color={"primary"} label={"Hepsi"}/>
-                    <Chip label={"Fiziko"}/>
-                    <Chip label={"Seminer"}/>
-                    <Chip label={"Çalıştay"}/>
-                    <Chip label={"Epsilon-Delta"}/>
-                    <Chip label={"Geziler"}/>
+                    <Chip label={"Popüler bilim"}/>
                 </Grid>
                 <Grid container justify={"space-around"} style={{marginBottom: "15px"}}>
-                    <Chip color={"primary"} label={"Yaklaşan"}/>
                     <Chip label={"Arşiv"}/>
                 </Grid>
                 <TextCardListPosts/>
