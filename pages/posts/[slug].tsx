@@ -12,7 +12,8 @@ export default function PostsSlug({data}: InferGetStaticPropsType<typeof getStat
                 <title>{data?.posts?.nodes[0]?.title}</title>
             </Head>
             <Grid container justify={"center"}>
-                <div style={{width: "610px"}} dangerouslySetInnerHTML={{__html: data?.posts?.nodes[0]?.content}}/>
+                <div style={{maxWidth: "610px"}}
+                     dangerouslySetInnerHTML={{__html: `<h1 style="font-weight: bold; font-size: 50px">${data?.posts?.nodes[0]?.title}</h1><br/>` + data?.posts?.nodes[0]?.content}}/>
             </Grid>
         </Layout>
     )

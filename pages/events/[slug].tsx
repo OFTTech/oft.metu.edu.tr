@@ -12,7 +12,8 @@ export default function EventsSlug({data}: InferGetStaticPropsType<typeof getSta
                 <title>{data?.events?.nodes[0]?.title}</title>
             </Head>
             <Grid container justify={"center"}>
-                <div style={{width: "610px"}} dangerouslySetInnerHTML={{__html: data?.events?.nodes[0]?.content}}/>
+                <div style={{maxWidth: "610px"}}
+                     dangerouslySetInnerHTML={{__html: `<h1 style="font-weight: bold; font-size: 50px">${data?.events?.nodes[0]?.title}</h1><br/>` + data?.events?.nodes[0]?.content}}/>
             </Grid>
         </Layout>
     )
