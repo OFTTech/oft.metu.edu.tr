@@ -9,6 +9,13 @@ import Head from "next/head";
 import {useStore} from "@@/lib/store";
 import {Provider} from 'react-redux'
 
+// nprogress
+Router.events.on('routeChangeStart', (url) => {
+    console.log(`Loading: ${url}`)
+    NProgress.start()
+})
+Router.events.on('routeChangeComplete', () => NProgress.done())
+Router.events.on('routeChangeError', () => NProgress.done())
 
 export default function App({Component, pageProps}: AppProps) {
     useEffect(() => {
@@ -18,15 +25,6 @@ export default function App({Component, pageProps}: AppProps) {
             jssStyles.parentElement.removeChild(jssStyles);
         }
     }, []);
-    useEffect(() => {
-        // nprogress
-        Router.events.on('routeChangeStart', (url) => {
-            console.log(`Loading: ${url}`)
-            NProgress.start()
-        })
-        Router.events.on('routeChangeComplete', () => NProgress.done())
-        Router.events.on('routeChangeError', () => NProgress.done())
-    })
 
     const store = useStore(pageProps.initialReduxState)
 
