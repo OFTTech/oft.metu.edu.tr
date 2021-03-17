@@ -1,6 +1,6 @@
 export default async function fetchAPI(query, {variables} = {variables: null}) {
     const headers = {'Content-Type': 'application/json'}
-    const res = await fetch(process.env.WP_SITE + "/graphql", {
+    const res = await fetch("http://" + process.env.WP_SITE + "/graphql", {
         method: 'POST',
         headers,
         body: JSON.stringify({
