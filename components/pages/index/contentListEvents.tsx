@@ -2,23 +2,23 @@ import {Card, CardContent, Grid, Typography} from "@material-ui/core";
 import styles from './contentList.module.scss'
 import Image from "next/image";
 import useSWR from "swr";
-import {GetContentListPosts} from "@@/lib/wp-api/components/pages/index/contentList";
+import {GetContentListEvents} from "@@/lib/wp-api/components/pages/index/contentListEvents";
 import {stripHtml} from "@@/lib/helpers";
-import Link from 'next/link'
-import {format, parseISO} from "date-fns";
+import Link from "next/link";
+import {parseISO, format} from 'date-fns'
 import {tr} from "date-fns/locale";
 
-export default function ContentList() {
+export default function ContentListEvents() {
     const {
         data,
         error
-    }: { data?: GetContentListPosts, error?: any } = useSWR(`/api/components/pages/index/contentList/posts`)
+    }: { data?: GetContentListEvents, error?: any } = useSWR(`/api/components/pages/index/contentList/events`)
     return (
         <Grid container className={`${styles.bigCard}`}>
-            {!error && data && data.posts.edges.map((value) => (
+            {!error && data && data.events.edges.map((value) => (
                 <Grid item xs={12} key={value.node.id}>
                     <Card elevation={0} className={`${styles.card}`}>
-                        <Link href={"/posts/" + value.node.slug}>
+                        <Link href={"/events/" + value.node.slug}>
                             <a style={{color: "black"}}>
                                 <CardContent>
                                     <Grid container className={styles.truncate}>
@@ -27,9 +27,7 @@ export default function ContentList() {
                                         </Grid>
                                         <Grid item xs={10}>
                                             <Typography variant={"h6"} style={{fontSize: "20px"}}
-                                                        className={"font-bold"}>
-                                                {stripHtml(value.node.title)}
-                                            </Typography>
+                                                        className={"font-bold"}>{stripHtml(value.node.title)}</Typography>
                                             <Typography style={{fontSize: "15px"}} className={"font-bold"}
                                                         variant={"subtitle1"}>{stripHtml(value.node.excerpt)}</Typography>
                                             <Typography style={{fontSize: "10px"}}

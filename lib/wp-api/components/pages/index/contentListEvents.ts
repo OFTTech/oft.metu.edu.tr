@@ -1,11 +1,11 @@
 import fetchAPI from "@@/lib/wp-api/index";
 
-export type GetContentListPosts = { posts: { edges: [{ node: { slug: string, id: string, title: string, content: string, excerpt: string, date: string } }] } }
+export type GetContentListEvents = { events: { edges: [{ node: { slug: string, id: string, title: string, content: string, excerpt: string, date: string } }] } }
 
-export async function getContentList() {
+export async function getContentListEvents() {
     const data = await fetchAPI(`
         query MyQuery {
-          posts {
+          events {
             edges {
               node {
                 slug

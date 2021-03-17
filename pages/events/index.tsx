@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Layout from "@@/components/layout";
 import {makeStyles} from "@material-ui/core/styles";
 import {Chip, Grid} from "@material-ui/core";
-import TextCardList from "@@/components/pages/events/textCardList";
+import TextCardListEvents from "@@/components/pages/events/textCardListEvents";
 import {GetStaticProps} from "next";
 import {getGeneral} from "@@/lib/wp-api/general";
 
@@ -32,7 +32,7 @@ export default function Events() {
                     <Chip color={"primary"} label={"Yaklaşan"}/>
                     <Chip label={"Arşiv"}/>
                 </Grid>
-                <TextCardList/>
+                <TextCardListEvents/>
             </Grid>
         </Layout>
     )

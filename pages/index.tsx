@@ -7,6 +7,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import Image from 'next/image'
 import {GetStaticProps} from "next";
 import {getGeneral} from "@@/lib/wp-api/general";
+import ContentListEvents from "@@/components/pages/index/contentListEvents";
 
 const useStyles = makeStyles(() => ({
     fontTop: {
@@ -35,7 +36,7 @@ export default function Home() {
                         <Typography variant="h5" className={classes.fontTop}>
                             YAKLAŞAN ETKİNLİKLER
                         </Typography>
-                        <ContentList type={"events"}/>
+                        <ContentListEvents/>
                         <Grid style={{marginTop: "10px"}} container justify={"center"}>
                             <Image src={"/logo.jpg"} width={80} height={80}/>
                             <div style={{marginRight: "20px"}}/>
@@ -55,7 +56,7 @@ export default function Home() {
                         <Typography variant="h5" className={classes.fontTop}>
                             SON YAZILAR
                         </Typography>
-                        <ContentList type={"posts"}/>
+                        <ContentList/>
                         <Grid style={{marginTop: "10px"}} container justify={"center"}>
                             <Image src={"/logo.jpg"} width={80} height={80}/>
                             <div style={{marginRight: "20px"}}/>

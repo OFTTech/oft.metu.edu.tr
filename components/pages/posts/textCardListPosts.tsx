@@ -1,9 +1,9 @@
-import {Card, CardContent, Grid, Typography} from "@material-ui/core";
-import styles from "./textCardList.module.scss";
+import {Card, CardContent, Divider, Grid, Typography} from "@material-ui/core";
+import styles from "./textCardListPosts.module.scss";
 import Image from "next/image";
 import Link from 'next/link'
 
-export default function TextCardList() {
+export default function TextCardListPosts() {
     return (
         <Grid container justify={"center"}>
             {[...Array(10)].map((value, index) => (
@@ -19,7 +19,8 @@ export default function TextCardList() {
                                                 className={"font-bold"}>Fiziko-9</Typography>
                                     <Typography style={{fontSize: "15px"}} className={"font-bold"}
                                                 variant={"subtitle1"}>Hocalarla farklı konular üzerine sohbet ettiğimiz,
-                                        merak ettiklerinizi sorduğumuz Fiziko serimizin 8. yayınına Prof. Dr. Altuğ Özpineci ile devam...</Typography>
+                                        merak ettiklerinizi sorduğumuz Fiziko serimizin 8. yayınına Prof. Dr. Altuğ
+                                        Özpineci ile devam...</Typography>
                                     <Typography style={{fontSize: "10px", color: "#5179c3"}}
                                                 variant={"subtitle1"}>
                                         <Link href={"/altug-ozpineci"}>
@@ -33,6 +34,7 @@ export default function TextCardList() {
                             </Grid>
                         </CardContent>
                     </Card>
+                    <Divider/>
                 </Grid>
             ))}
         </Grid>

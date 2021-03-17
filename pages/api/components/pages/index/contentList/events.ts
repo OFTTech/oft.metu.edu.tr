@@ -1,7 +1,7 @@
 import {NextApiRequest, NextApiResponse} from "next";
-import {getContentList} from "@@/lib/wp-api/components/pages/index/contentList";
+import {getContentListEvents} from "@@/lib/wp-api/components/pages/index/contentListEvents";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const contentList = await getContentList({type: (req.query.type as "events" | "posts")})
+    const contentList = await getContentListEvents()
     res.status(200).json(contentList)
 }
