@@ -4,6 +4,8 @@ import Link from 'next/link'
 import {siteTitle} from "@@/components/layout";
 import styles from './navbar.module.scss'
 import {getGeneralMenus} from "@@/lib/store/general";
+import React from "react";
+import {KeyboardArrowDown} from '@material-ui/icons';
 
 export default function Navbar() {
     return (
@@ -25,16 +27,26 @@ export default function Navbar() {
                             </Typography>
                             <Grid container>
                                 {getGeneralMenus().map(({node}) => {
-                                    return (
-                                        <Link key={node.id}
-                                              href={{pathname: node.connectedNode ? "/page" + node.path : node.path}}>
-                                            <a>
-                                                <Typography variant="h5" className={styles.menuName}>
-                                                    {node.label}
-                                                </Typography>
-                                            </a>
-                                        </Link>
-                                    )
+                                    if (!node.parentId) {
+                                        return (
+                                            <React.Fragment key={node.id}>
+                                                <Link
+                                                    href={{pathname: node.connectedNode ? "/page" + node.path : node.path}}>
+                                                    <a>
+                                                        {node.childItems.edges.length > 0 ?
+                                                            <Typography variant="h5" className={styles.menuName}>
+                                                                {node.label}<KeyboardArrowDown/>
+                                                            </Typography>
+                                                            :
+                                                            <Typography variant="h5" className={styles.menuName}>
+                                                                {node.label}
+                                                            </Typography>
+                                                        }
+                                                    </a>
+                                                </Link>
+                                            </React.Fragment>
+                                        )
+                                    }
                                 })}
                             </Grid>
                         </Grid>

@@ -1,6 +1,17 @@
 import fetchAPI from "@@/lib/wp-api/index";
 
-export type GetGeneralMenuNode = { id: string, label: string, path: string, connectedNode: { node: { uri: string } } }
+export type GetGeneralMenuNode = {
+    id: string,
+    label: string,
+    path: string,
+    parentId: string,
+    connectedNode: {
+        node: {
+            uri: string
+        }
+    },
+    childItems: { edges: [{ node: { parentId: string, id: string, label: string, path: string, connectedNode: { node: { uri: string } } } }] }
+}
 export type GetGeneralMenuItemsEdges = [{ node: GetGeneralMenuNode }]
 export type GetGeneral = { menus: { edges: [{ node: { menuItems: { edges: GetGeneralMenuItemsEdges } } }] } }
 
@@ -13,12 +24,27 @@ export async function getGeneral() {
                 menuItems {
                   edges {
                     node {
+                      parentId
                       id
                       label
                       path
                       connectedNode {
                         node {
-                            uri
+                          uri
+                        }
+                      }
+                      childItems {
+                        edges {
+                          node {
+                            id
+                            label
+                            path
+                            connectedNode {
+                              node {
+                                uri
+                              }
+                            }
+                          }
                         }
                       }
                     }
