@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {siteTitle} from "@@/components/layout";
 import styles from './navbar.module.scss'
-import {getGeneralMenus} from "@@/lib/store";
+import {getGeneralMenus} from "@@/lib/store/general";
 
 export default function Navbar() {
     return (

@@ -1,8 +1,6 @@
 import {useMemo} from 'react'
 import {createStore, applyMiddleware} from 'redux'
 import {composeWithDevTools} from 'redux-devtools-extension'
-import {GetGeneral, GetGeneralMenuItemsEdges} from "@@/lib/wp-api/general";
-import {useSelector} from 'react-redux'
 
 let store
 
@@ -53,15 +51,5 @@ export const initializeStore = (preloadedState?: any) => {
 }
 
 export function useStore(initialState) {
-    const store = useMemo(() => initializeStore(initialState), [initialState])
-    return store
-}
-
-
-function getGeneralState(): GetGeneral {
-    return useSelector((state) => state.general)
-}
-
-export function getGeneralMenus(): GetGeneralMenuItemsEdges {
-    return getGeneralState().menus.edges[0].node.menuItems.edges
+    return useMemo(() => initializeStore(initialState), [initialState])
 }

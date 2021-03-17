@@ -35,7 +35,7 @@ export default function Home() {
                         <Typography variant="h5" className={classes.fontTop}>
                             YAKLAŞAN ETKİNLİKLER
                         </Typography>
-                        <ContentList/>
+                        <ContentList type={"events"}/>
                         <Grid style={{marginTop: "10px"}} container justify={"center"}>
                             <Image src={"/logo.jpg"} width={80} height={80}/>
                             <div style={{marginRight: "20px"}}/>
@@ -55,7 +55,7 @@ export default function Home() {
                         <Typography variant="h5" className={classes.fontTop}>
                             SON YAZILAR
                         </Typography>
-                        <ContentList/>
+                        <ContentList type={"posts"}/>
                         <Grid style={{marginTop: "10px"}} container justify={"center"}>
                             <Image src={"/logo.jpg"} width={80} height={80}/>
                             <div style={{marginRight: "20px"}}/>
