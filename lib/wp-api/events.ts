@@ -1,6 +1,6 @@
 import fetchAPI from "@@/lib/wp-api/index";
 
-export type GetEvent = { events: { nodes: [{ content: string, title: string }] } }
+export type GetEvent = { events: { nodes: [{ content: string, title: string, featuredImage: { node: { mediaItemUrl: string } } }] } }
 
 export async function getEvent(name) {
     const data: GetEvent = await fetchAPI(`
@@ -9,6 +9,11 @@ export async function getEvent(name) {
               nodes {
                 content
                 title
+                featuredImage {
+                    node {
+                        mediaItemUrl
+                    }
+                }
               }
           }
         }

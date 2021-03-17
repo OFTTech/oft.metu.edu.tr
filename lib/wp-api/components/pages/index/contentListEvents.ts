@@ -1,6 +1,6 @@
 import fetchAPI from "@@/lib/wp-api/index";
 
-export type GetContentListEvents = { events: { edges: [{ node: { slug: string, id: string, title: string, content: string, excerpt: string, date: string } }] } }
+export type GetContentListEvents = { events: { edges: [{ node: { featuredImage: { node: { mediaItemUrl: string } }, slug: string, id: string, title: string, content: string, excerpt: string, date: string } }] } }
 
 export async function getContentListEvents() {
     const data = await fetchAPI(`
@@ -14,6 +14,11 @@ export async function getContentListEvents() {
                 excerpt
                 date
                 id
+                featuredImage {
+                    node {
+                        mediaItemUrl
+                    }
+                }
               }
             }
           }

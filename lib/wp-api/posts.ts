@@ -1,6 +1,6 @@
 import fetchAPI from "@@/lib/wp-api/index";
 
-export type GetPost = { posts: { nodes: [{ content: string, title: string }] } }
+export type GetPost = { posts: { nodes: [{ content: string, title: string, featuredImage: { node: { mediaItemUrl: string } } }] } }
 
 export async function getPost(name) {
     const data: GetPost = await fetchAPI(`
@@ -9,6 +9,11 @@ export async function getPost(name) {
               nodes {
                 content
                 title
+                featuredImage {
+                    node {
+                        mediaItemUrl
+                    }
+                }
               }
           }
         }

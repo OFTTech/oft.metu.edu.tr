@@ -14,7 +14,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const nextConfig = {
     images: {
-        domains: ['blog.metu.edu.tr'],
+        domains: ['blog.metu.edu.tr', 's3.eu-central-1.amazonaws.com'],
     }
 }
 

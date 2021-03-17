@@ -23,7 +23,8 @@ export default function ContentList() {
                                 <CardContent>
                                     <Grid container className={styles.truncate}>
                                         <Grid item xs={2}>
-                                            <Image src={"/logo.jpg"} width={50} height={50}/>
+                                            <Image src={value.node.featuredImage?.node.mediaItemUrl || "/logo.jpg"} width={50}
+                                                   height={50}/>
                                         </Grid>
                                         <Grid item xs={10}>
                                             <Typography variant={"h6"} style={{fontSize: "20px"}}
