@@ -47,11 +47,6 @@ export default function Home() {
                             <Image src={"/logo.jpg"} width={80} height={80}/>
                         </Grid>
                     </Grid>
-                    <Grid item xs={12} md={1} className={classes.middle}>
-                        <Image src={"/logo.jpg"} width={80} height={80}/>
-                        <br/>
-                        <Image src={"/logo.jpg"} width={80} height={80}/>
-                    </Grid>
                     <Grid item xs={12} md={5}>
                         <Typography variant="h5" className={classes.fontTop}>
                             SON YAZILAR

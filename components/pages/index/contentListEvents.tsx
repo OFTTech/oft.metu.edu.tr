@@ -1,5 +1,5 @@
 import {Card, CardContent, Grid, Typography} from "@material-ui/core";
-import styles from './contentList.module.scss'
+import styles from './contentListEvents.module.scss'
 import Image from "next/image";
 import useSWR from "swr";
 import {GetContentListEvents} from "@@/lib/wp-api/components/pages/index/contentListEvents";
