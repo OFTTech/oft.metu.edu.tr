@@ -2,7 +2,9 @@ import fetchAPI from "@@/lib/wp-api/index";
 import {query} from "@@/lib/db";
 
 export type GetEvent = { events: { nodes: [{ content: string, title: string, featuredImage: { node: { mediaItemUrl: string } } }] } }
-export type GetEvents = [{ id: string, date: string, excerpt: string, slug: string, title: string, featuredImage: string }]
+export type GetEventsCategories = { categories: { edges: [{ node: { children: { edges: [{ node: { id: string, name: string } }] } } }] } }
+export type GetEventsDB = [{ id: string, date: string, excerpt: string, slug: string, title: string, featuredImage: string }]
+export type GetEvents = { events: GetEventsDB, categories: GetEventsCategories }
 
 export async function getEvent(name) {
     const data: GetEvent = await fetchAPI(`
@@ -24,6 +26,24 @@ export async function getEvent(name) {
 }
 
 export async function getEvents({archive}: { archive?: any }) {
+    const categories: GetEventsCategories = await fetchAPI(`
+        query MyQuery {
+          categories(where: {search: "Etkinlikler"}) {
+            edges {
+              node {
+                children {
+                  edges {
+                    node {
+                      id
+                      name
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+    `,)
     if (archive) {
         const results = (await query(
             "SELECT postmeta.meta_value as date," +
@@ -42,8 +62,8 @@ export async function getEvents({archive}: { archive?: any }) {
             "where posts.post_status=\"publish\" " +
             "and postmeta.meta_value<=CURRENT_DATE()" +
             "order by postmeta.meta_value desc;"
-        ) as GetEvents)
-        return results
+        ) as GetEventsDB)
+        return {events: results, categories}
     } else {
         const results = (await query(
             "SELECT postmeta.meta_value as date," +
@@ -61,7 +81,7 @@ export async function getEvents({archive}: { archive?: any }) {
             "where posts.post_status=\"publish\" " +
             "and postmeta.meta_value>=CURRENT_DATE()" +
             "order by postmeta.meta_value asc;"
-        ) as GetEvents)
-        return results
+        ) as GetEventsDB)
+        return {events: results, categories}
     }
 }

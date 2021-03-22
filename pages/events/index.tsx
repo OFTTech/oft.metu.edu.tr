@@ -5,7 +5,10 @@ import {Chip, Grid} from "@material-ui/core";
 import TextCardListEvents from "@@/components/pages/events/textCardListEvents";
 import {GetStaticProps} from "next";
 import {getGeneral} from "@@/lib/wp-api/general";
-import {useState} from "react";
+import {Fragment, useState} from "react";
+import {GetEvents} from "@@/lib/wp-api/events";
+import useSWR from "swr";
+import fetcher from "@@/lib/fetcher";
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -17,6 +20,10 @@ export default function Events() {
     const classes = useStyles();
     const [apiEvents, setApiEvents] = useState(`/api/components/pages/events`);
     const [selected, setSelected] = useState({yaklasan: true, arsiv: false});
+    const {
+        data,
+        error
+    }: { data?: GetEvents, error?: any } = useSWR(apiEvents, fetcher)
     return (
         <Layout>
             <Head>
@@ -25,11 +32,11 @@ export default function Events() {
             <Grid container className={classes.root}>
                 <Grid container justify={"space-around"} style={{marginBottom: "15px"}}>
                     <Chip color={"primary"} label={"Hepsi"}/>
-                    <Chip label={"Fiziko"}/>
-                    <Chip label={"Seminer"}/>
-                    <Chip label={"Çalıştay"}/>
-                    <Chip label={"Epsilon-Delta"}/>
-                    <Chip label={"Geziler"}/>
+                    {!error && data && data.categories.categories.edges[0].node.children.edges.map((value) => {
+                        return (<Fragment key={value.node.id}>
+                            <Chip label={value.node.name}/>
+                        </Fragment>)
+                    })}
                 </Grid>
                 <Grid container justify={"space-around"} style={{marginBottom: "15px"}}>
                     <Chip onClick={() => {
@@ -44,7 +51,7 @@ export default function Events() {
                     }}
                           color={selected.arsiv ? "primary" : "default"} label={"Arşiv"}/>
                 </Grid>
-                <TextCardListEvents apiEvents={apiEvents} setApiEvents={setApiEvents}/>
+                <TextCardListEvents data={data} error={error} setApiEvents={setApiEvents}/>
             </Grid>
         </Layout>
     )

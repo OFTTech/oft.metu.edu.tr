@@ -2,21 +2,14 @@ import {Card, CardContent, Divider, Grid, Typography} from "@material-ui/core";
 import styles from "./textCardListEvents.module.scss";
 import Image from "next/image";
 import Link from 'next/link'
-import useSWR from "swr";
-import {GetEvents} from "@@/lib/wp-api/events";
 import {stripHtml} from "@@/lib/helpers";
 import {format, parseISO} from "date-fns";
 import {tr} from "date-fns/locale";
-import fetcher from "@@/lib/fetcher";
 
-export default function TextCardListEvents({apiEvents, setApiEvents}) {
-    const {
-        data,
-        error
-    }: { data?: GetEvents, error?: any } = useSWR(apiEvents, fetcher)
+export default function TextCardListEvents({setApiEvents, data, error}) {
     return (
         <Grid container justify={"center"}>
-            {!error && data && data.map((value, index) => {
+            {!error && data && data.events.map((value, index) => {
                 return (
                     <Grid item xs={12} key={index}>
                         <Card elevation={0} className={`${styles.card}`}>
