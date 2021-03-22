@@ -29,6 +29,7 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.9",
     "sass": "^1.32.8",
+    "serverless-mysql": "^1.5.4",
     "swr": "^0.5.2",
     "tailwindcss": "^2.0.3"
   },

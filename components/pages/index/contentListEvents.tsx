@@ -5,7 +5,7 @@ import useSWR from "swr";
 import {GetContentListEvents} from "@@/lib/wp-api/components/pages/index/contentListEvents";
 import {stripHtml} from "@@/lib/helpers";
 import Link from "next/link";
-import {parseISO, format} from 'date-fns'
+import {format, parseISO} from 'date-fns'
 import {tr} from "date-fns/locale";
 
 export default function ContentListEvents() {
@@ -15,25 +15,25 @@ export default function ContentListEvents() {
     }: { data?: GetContentListEvents, error?: any } = useSWR(`/api/components/pages/index/contentList/events`)
     return (
         <Grid container className={`${styles.bigCard}`}>
-            {!error && data && data.events.edges.map((value) => (
-                <Grid item xs={12} key={value.node.id}>
+            {!error && data && data.map((value) => (
+                <Grid item xs={12} key={value.id}>
                     <Card elevation={0} className={`${styles.card}`}>
-                        <Link href={"/events/" + value.node.slug}>
+                        <Link href={"/events/" + value.slug}>
                             <a style={{color: "black"}}>
                                 <CardContent>
                                     <Grid container className={styles.truncate}>
                                         <Grid item xs={2}>
-                                            <Image src={value.node.featuredImage?.node.mediaItemUrl || "/logo.jpg"}
+                                            <Image src={value.featuredImage || "/logo.jpg"}
                                                    width={50}
                                                    height={50}/>
                                         </Grid>
                                         <Grid item xs={10}>
                                             <Typography variant={"h6"} style={{fontSize: "20px"}}
-                                                        className={"font-bold"}>{stripHtml(value.node.title)}</Typography>
+                                                        className={"font-bold"}>{stripHtml(value.title)}</Typography>
                                             <Typography style={{fontSize: "15px"}} className={"font-bold"}
-                                                        variant={"subtitle1"}>{stripHtml(value.node.excerpt)}</Typography>
+                                                        variant={"subtitle1"}>{stripHtml(value.excerpt)}</Typography>
                                             <Typography style={{fontSize: "10px"}}
-                                                        variant={"subtitle1"}>{format(parseISO(value.node.date), "d LLLL, yyyy", {locale: tr})}</Typography>
+                                                        variant={"subtitle1"}>{value.date ? format(parseISO(value.date), "d LLLL, yyyy", {locale: tr}) : ""}</Typography>
                                         </Grid>
                                     </Grid>
                                 </CardContent>

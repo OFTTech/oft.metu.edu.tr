@@ -5,6 +5,7 @@ import {Chip, Grid} from "@material-ui/core";
 import TextCardListEvents from "@@/components/pages/events/textCardListEvents";
 import {GetStaticProps} from "next";
 import {getGeneral} from "@@/lib/wp-api/general";
+import {useState} from "react";
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -14,6 +15,8 @@ const useStyles = makeStyles(() => ({
 
 export default function Events() {
     const classes = useStyles();
+    const [apiEvents, setApiEvents] = useState(`/api/components/pages/events`);
+    const [selected, setSelected] = useState({yaklasan: true, arsiv: false});
     return (
         <Layout>
             <Head>
@@ -29,10 +32,19 @@ export default function Events() {
                     <Chip label={"Geziler"}/>
                 </Grid>
                 <Grid container justify={"space-around"} style={{marginBottom: "15px"}}>
-                    <Chip color={"primary"} label={"Yaklaşan"}/>
-                    <Chip label={"Arşiv"}/>
+                    <Chip onClick={() => {
+                        setSelected({...selected, ...{yaklasan: true, arsiv: false}})
+                        setApiEvents(`/api/components/pages/events`)
+                    }}
+                          color={selected.yaklasan ? "primary" : "default"}
+                          label={"Yaklaşan"}/>
+                    <Chip onClick={() => {
+                        setSelected({...selected, ...{yaklasan: false, arsiv: true}})
+                        setApiEvents(`/api/components/pages/events?archive=1`)
+                    }}
+                          color={selected.arsiv ? "primary" : "default"} label={"Arşiv"}/>
                 </Grid>
-                <TextCardListEvents/>
+                <TextCardListEvents apiEvents={apiEvents} setApiEvents={setApiEvents}/>
             </Grid>
         </Layout>
     )
