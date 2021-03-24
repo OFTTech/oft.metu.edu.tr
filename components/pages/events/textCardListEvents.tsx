@@ -30,7 +30,7 @@ export default function TextCardListEvents({setApiEvents, data, error}) {
                                                 <Typography style={{fontSize: "10px", color: "#5179c3"}}
                                                             variant={"subtitle1"}>
                                                     <Link href={"/altug-ozpineci"}>
-                                                        <a>Prof. Dr. Altuğ Özpineci</a>
+                                                        <a>{/*Prof.Dr.Altuğ Özpineci*/}</a>
                                                     </Link>{/*TODO validateDOMNesting(...): <a> cannot appear as a descendant of <a>*/}
                                                 </Typography>
                                             </Grid>
