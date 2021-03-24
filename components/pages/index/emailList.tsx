@@ -12,7 +12,6 @@ import {
 } from "@material-ui/core";
 import styles from './emailList.module.scss'
 import Email from '@material-ui/icons/Email';
-import CloseIcon from '@material-ui/icons/Close';
 import {useState} from "react";
 
 export default function EmailList() {
@@ -77,9 +76,7 @@ export default function EmailList() {
                         onClose={handleClose}
                         message="E-posta adresiniz kaydedildi"
                         action={
-                            <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
-                                <CloseIcon fontSize="small"/>
-                            </IconButton>
+                            <IconButton size="small" aria-label="close" color="inherit"/>
                         }
                     />
                 </Container>
