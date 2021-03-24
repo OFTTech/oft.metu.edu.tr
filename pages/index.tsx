@@ -2,12 +2,13 @@ import Head from 'next/head'
 import Layout from "@@/components/layout";
 import BigGallery from "@@/components/pages/index/bigGallery";
 import ContentList from "@@/components/pages/index/contentList";
-import {Grid, Typography} from "@material-ui/core";
+import {Container, Grid, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import Image from 'next/image'
 import {GetStaticProps} from "next";
 import {getGeneral} from "@@/lib/wp-api/general";
 import ContentListEvents from "@@/components/pages/index/contentListEvents";
+import EmailList from "@@/components/pages/index/emailList";
 
 const useStyles = makeStyles(() => ({
     fontTop: {
@@ -62,6 +63,9 @@ export default function Home() {
                             <Image src={"/logo.jpg"} width={80} height={80}/>
                         </Grid>
                     </Grid>
+                    <Container maxWidth={"sm"}>
+                        <EmailList/>
+                    </Container>
                 </Grid>
             </Grid>
         </Layout>

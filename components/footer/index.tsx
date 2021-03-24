@@ -7,22 +7,6 @@ export default function Footer() {
             <Grid container justify={"space-between"}>
                 <Grid item xs={3}/>
                 <Grid item xs={6} style={{textAlign: "center"}}>
-                    footer
-                    footer
-                    footer
-                    footer
-                    footer
-                    footer
-                    footer
-                    footer
-                    footer
-                    footer
-                    footer
-                    footer
-                    footer
-                    footer
-                    footer
-                    footer
                     <br/>
                     Copyright © <a href={"https://github.com/OFTTech"} rel={"noopener"} target={"_blank"}>OFTTech</a>
                 </Grid>

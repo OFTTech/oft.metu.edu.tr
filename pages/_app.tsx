@@ -31,7 +31,8 @@ export default function App({Component, pageProps}: AppProps) {
     return (
         <Provider store={store}>
             <Head>
-                <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width"/>
+                <meta name="viewport"
+                      content="width=device-width, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86"/>
             </Head>
             <ThemeProvider theme={theme}>
                 <Component {...pageProps} />
