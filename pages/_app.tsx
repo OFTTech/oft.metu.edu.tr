@@ -32,7 +32,7 @@ export default function App({Component, pageProps}: AppProps) {
         <Provider store={store}>
             <Head>
                 <meta name="viewport"
-                      content="width=device-width, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86"/>
+                      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1"/>
             </Head>
             <ThemeProvider theme={theme}>
                 <Component {...pageProps} />
