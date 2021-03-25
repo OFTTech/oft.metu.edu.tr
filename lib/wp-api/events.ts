@@ -1,7 +1,7 @@
 import fetchAPI from "@@/lib/wp-api/index";
 import {query} from "@@/lib/db";
 
-export type GetEvent = { events: { nodes: [{ content: string, title: string, featuredImage: { node: { mediaItemUrl: string } } }] } }
+export type GetEvent = { events: { nodes: [{ slug: string, content: string, title: string, featuredImage: { node: { mediaItemUrl: string } } }] } }
 export type GetEventsCategories = { categories: { edges: [{ node: { children: { edges: [{ node: { id: string, name: string } }] } } }] } }
 export type GetEventsDB = [{ id: string, date: string, excerpt: string, slug: string, title: string, featuredImage: string }]
 export type GetEvents = { events: GetEventsDB, categories: GetEventsCategories }
@@ -13,6 +13,7 @@ export async function getEvent(name) {
               nodes {
                 content
                 title
+                slug
                 featuredImage {
                     node {
                         mediaItemUrl

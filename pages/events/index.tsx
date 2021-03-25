@@ -28,6 +28,10 @@ export default function Events() {
         <Layout>
             <Head>
                 <title>Etkinliklerimiz</title>
+                <meta name={"description"}
+                      content={"ODTÜ Fizik Topluluğu olarak periyodik olarak düzenlediğimiz çeşitli etkinliklere buradan ulaşabilirsiniz."}/>
+                <link rel={"canonical"}
+                      href={process.env.NEXT_PUBLIC_REAL_SITE_URL + "/events/"}/>
             </Head>
             <Grid container className={classes.root}>
                 <Grid container justify={"space-around"} style={{marginBottom: "15px"}}>

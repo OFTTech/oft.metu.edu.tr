@@ -17,7 +17,10 @@ export default function Posts() {
     return (
         <Layout>
             <Head>
-                <title>Etkinliklerimiz</title>
+                <title>Yazılar</title>
+                <meta name={"description"}
+                      content={"ODTÜ Fizik Topluluğu üyeleri olarak paylaşmış olduğumuz popüler bilimden röportajlara kadar pek çok türde yazıları okuyabilirsiniz."}/>
+                <link rel={"canonical"} href={process.env.NEXT_PUBLIC_REAL_SITE_URL + "/posts/"}/>
             </Head>
             <Grid container className={classes.root}>
                 <Grid container justify={"space-around"} style={{marginBottom: "15px"}}>

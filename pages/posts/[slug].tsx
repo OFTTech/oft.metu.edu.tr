@@ -10,6 +10,10 @@ export default function PostsSlug({data}: InferGetStaticPropsType<typeof getStat
         <Layout>
             <Head>
                 <title>{data?.posts?.nodes[0]?.title}</title>
+                <meta name={"description"}
+                      content={"ODTÜ Fizik Topluluğu üyeleri olarak paylaşmış olduğumuz popüler bilimden röportajlara kadar pek çok türde yazıları okuyabilirsiniz."}/>
+                <link rel={"canonical"}
+                      href={process.env.NEXT_PUBLIC_REAL_SITE_URL + "/posts/" + data?.posts?.nodes[0]?.slug}/>
             </Head>
             <h1 style={{
                 fontWeight: "bold",

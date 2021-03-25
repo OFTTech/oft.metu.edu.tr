@@ -28,7 +28,10 @@ export default function Home() {
     return (
         <Layout>
             <Head>
-                <title>ODTÜ Fizik Topluluğu</title>
+                <title>ODTÜ Fizik Topluluğu – Scientia Dux Vitae Certissimus</title>
+                <meta name={"description"}
+                      content={"1995'te kurulmuş olan ODTÜ Fizik Topluluğu, ODTÜ Kültür İşleri Müdürlüğü'ne bağlı bir öğrenci topluluğudur."}/>
+                <link rel={"canonical"} href={process.env.NEXT_PUBLIC_REAL_SITE_URL + "/"}/>
             </Head>
             <Grid container direction={"column"}>
                 <BigGallery/>

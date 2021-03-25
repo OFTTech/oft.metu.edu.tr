@@ -10,6 +10,8 @@ export default function Page({data}: InferGetStaticPropsType<typeof getStaticPro
         <Layout>
             <Head>
                 <title>{data?.pages?.nodes[0]?.title}</title>
+                <link rel={"canonical"}
+                      href={process.env.NEXT_PUBLIC_REAL_SITE_URL + "/page/" + data?.pages?.nodes[0]?.slug}/>
             </Head>
             <Grid container justify={"center"}>
                 <div style={{width: "610px"}} dangerouslySetInnerHTML={{__html: data?.pages?.nodes[0]?.content}}/>

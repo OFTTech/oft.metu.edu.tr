@@ -10,6 +10,8 @@ export default function EventsSlug({data}: InferGetStaticPropsType<typeof getSta
         <Layout>
             <Head>
                 <title>{data?.events?.nodes[0]?.title}</title>
+                <link rel={"canonical"}
+                      href={process.env.NEXT_PUBLIC_REAL_SITE_URL + "/events/" + data?.events?.nodes[0]?.slug}/>
             </Head>
             <h1 style={{
                 fontWeight: "bold",
